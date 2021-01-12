@@ -94,7 +94,8 @@ public class ReadmeKud {
     }
 public void datuBaseantxertatu(){
        KonexioDbKud kn = KonexioDbKud.getInstantzia();
-       kn.sartu(idVers.getText());
+       kn.sartu(idVers.getText(),idMd5.getText());
+
 }
    @FXML
     void initialize() {

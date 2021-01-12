@@ -19,7 +19,10 @@ public class KonexioDbKud {
         }
         return instantzia;
     }
-    public void sartu(String berts){
+    public void sartu(String berts,String md5){
+        String query= "insert into checksums(version) value( '"+berts+"') where md5='"+md5+"' ";
+        DbKudSqlite dbKud= DbKudSqlite.getInstantzia();
+        ResultSet rs=dbKud.execSQL(query);
 
     }
 
