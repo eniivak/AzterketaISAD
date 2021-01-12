@@ -29,8 +29,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException, SQLException {
         stage = primaryStage;
         pantailaKargatu();
-        mainScene = new Scene(mainUI, 600, 500);
-        //  stage.initStyle(StageStyle.UNDECORATED);
+        mainScene = new Scene(mainUI, 650, 450);
         pantailamugitu();
         hasieraKargatu();
     }

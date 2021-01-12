@@ -3,29 +3,21 @@ package ehu.isad.controllers.ui;
 import ehu.isad.App;
 import ehu.isad.controllers.db.KonexioDbKud;
 import ehu.isad.model.Readme;
-import ehu.isad.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import org.apache.commons.codec.binary.Hex;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;
 
 public class ReadmeKud {
     private App mainApp;
@@ -64,23 +56,31 @@ public class ReadmeKud {
         ObservableList<Readme> listap= FXCollections.observableArrayList();
         listap = kn.badago(hash,idBilatuText.getText());
         setLista(listap);
+        datuakBistaratu();
+
+    }
+
+    public void datuakBistaratu(){
         idTaula.setItems(lista);
 
-            idMd5.setCellValueFactory(new PropertyValueFactory<>("md5"));
-            idUrl.setCellValueFactory(new PropertyValueFactory<>("url"));
-            idVers.setCellValueFactory(new PropertyValueFactory<>("bertsioa"));
+        idMd5.setCellValueFactory(new PropertyValueFactory<>("md5"));
+        idUrl.setCellValueFactory(new PropertyValueFactory<>("url"));
+        idVers.setCellFactory(TextFieldTableCell.forTableColumn());
+        idVers.setCellValueFactory(new PropertyValueFactory<>("bertsioa"));
 
-            if(lista.get(0).getBertsioa()==null){
-                idInfo.setText("Ez zegoen Datubasean");
-                idVers.setEditable(true);
+        if(lista.get(0).getBertsioa()==null){
 
-            }
-            else{
-                idInfo.setText("Datubasean zegoen");
-            }
-
-
-
+            idInfo.setText("Ez zegoen Datubasean");
+            idVers.setOnEditCommit(
+                    (TableColumn.CellEditEvent<Readme, String> t) ->
+                            ( t.getTableView().getItems().get(
+                                    t.getTablePosition().getRow())
+                            ).setBertsioa(t.getNewValue())
+            );
+        }
+        else{
+            idInfo.setText("Datubasean zegoen");
+        }
     }
     public void setLista(ObservableList<Readme> plista) {
         lista = FXCollections.observableArrayList();
@@ -102,12 +102,10 @@ public class ReadmeKud {
 
     public String hashKalkulatu(String url) throws IOException, NoSuchAlgorithmException {
 
-        URL url1 = new URL("http://152.92.198.164/phpMyAdmin");
+        URL url1 = new URL(url);
         InputStream is = url1.openStream();
         MessageDigest md = MessageDigest.getInstance("MD5");
         String digest = getDigest(is, md, 2048);
-
-        System.out.println("MD5 Digest:" + digest);
         return digest;
 
     }
