@@ -1,13 +1,12 @@
 package ehu.isad;
 
 
-import ehu.isad.controllers.ui.ModelKud;
+import ehu.isad.controllers.ui.ReadmeKud;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ public class App extends Application {
 
     private Stage stage;
 
-    private ModelKud liburuKud;
+    private ReadmeKud liburuKud;
 
     private Scene mainScene;
 
@@ -30,7 +29,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException, SQLException {
         stage = primaryStage;
         pantailaKargatu();
-        mainScene = new Scene(mainUI, 800, 550);
+        mainScene = new Scene(mainUI, 600, 500);
         //  stage.initStyle(StageStyle.UNDECORATED);
         pantailamugitu();
         hasieraKargatu();

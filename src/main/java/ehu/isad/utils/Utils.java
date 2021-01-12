@@ -1,7 +1,7 @@
 package ehu.isad.utils;
 
 import com.google.gson.Gson;
-import ehu.isad.model.Model;
+import ehu.isad.model.Readme;
 
 import java.io.*;
 import java.net.URL;
@@ -25,7 +25,7 @@ public class Utils {
         return properties;
     }
 
-    private Model readFromUrl(String value) throws IOException {
+    private Readme readFromUrl(String value) throws IOException {
         // get JSON
         URL api = new URL("website.com?id="+value+"");
         URLConnection yc = api.openConnection();
@@ -34,6 +34,6 @@ public class Utils {
         in.close();
         // process if needed
         Gson gson = new Gson();
-        return gson.fromJson(inputLine, Model.class);
+        return gson.fromJson(inputLine, Readme.class);
     }
 }

@@ -30,10 +30,11 @@ mainClassName = "$moduleName/ehu.isad.App"
 
 javafx {
     version = "12"
-    //modules = [ 'javafx.graphics', 'javafx.fxml', 'javafx.controls']
+    modules = [ 'javafx.graphics', 'javafx.fxml', 'javafx.controls']
 }
 
 dependencies {
+    compile 'commons-codec:commons-codec:1.15'
     implementation 'com.google.code.gson:gson:2.8.6'
     // SQLite
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.34.0'

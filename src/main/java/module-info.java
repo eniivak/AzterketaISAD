@@ -6,5 +6,6 @@ open module azterketa {
     requires com.google.gson;
     requires java.desktop;
     requires java.sql;
+    requires org.apache.commons.codec;
     exports ehu.isad;
 }

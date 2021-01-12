@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="datubasea" uuid="f95a9ded-ffb3-4bb8-9e42-2058194ce501">
+    <data-source source="LOCAL" name="azterketa" uuid="01c89d42-dd5d-4e0d-8049-994051820e7f">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/datubasea.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/azterketa.db</jdbc-url>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.34.0/sqlite-jdbc-3.34.0.jar</url>
