@@ -19,6 +19,9 @@ public class KonexioDbKud {
         }
         return instantzia;
     }
+    public void sartu(String berts){
+
+    }
 
     public ObservableList<Readme> lortuGuztiak() throws SQLException {
         String query= "select * from captchas";

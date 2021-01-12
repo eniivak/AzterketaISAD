@@ -71,12 +71,16 @@ public class ReadmeKud {
         if(lista.get(0).getBertsioa()==null){
 
             idInfo.setText("Ez zegoen Datubasean");
-            idVers.setOnEditCommit(
-                    (TableColumn.CellEditEvent<Readme, String> t) ->
-                            ( t.getTableView().getItems().get(
-                                    t.getTablePosition().getRow())
-                            ).setBertsioa(t.getNewValue())
-            );
+            idVers.setCellFactory(TextFieldTableCell.forTableColumn());
+            idTaula.setEditable(true);
+            idVers.setOnEditCommit(data -> {
+                System.out.println( data.getNewValue());
+                System.out.println( data.getOldValue());
+
+                Readme p = data.getRowValue();
+                p.setBertsioa(data.getNewValue());
+            });
+            datuBaseantxertatu();
         }
         else{
             idInfo.setText("Datubasean zegoen");
@@ -88,7 +92,10 @@ public class ReadmeKud {
             lista.addAll(plista);
         }
     }
-
+public void datuBaseantxertatu(){
+       KonexioDbKud kn = KonexioDbKud.getInstantzia();
+       kn.sartu(idVers.getText());
+}
    @FXML
     void initialize() {
         idTaula.setItems(lista);
