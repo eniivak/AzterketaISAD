@@ -46,7 +46,7 @@ public class KonexioDbKud {
         Readme r= new Readme();
         if(rs.next()){
             r.setBertsioa(rs.getString("version"));
-            r.setId(rs.getInt("id"));
+            r.setId(rs.getInt("idCMS"));
             r.setPath(rs.getString("path"));
 
         }

@@ -6,14 +6,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.controllers.ui.ReadmeKud">
    <children>
       <Button fx:id="idBotoia" layoutX="457.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClick" text="Check" />
       <TableView fx:id="idTaula" layoutX="9.0" layoutY="90.0" prefHeight="250.0" prefWidth="587.0">
         <columns>
           <TableColumn fx:id="idUrl" prefWidth="254.0" text="URL" />
-          <TableColumn fx:id="idMd5" prefWidth="253.0" text="md5" />
+            <TableColumn fx:id="idMd5" prefWidth="253.0" text="md5" />
             <TableColumn editable="true" fx:id="idVers" prefWidth="79.0" text="version" />
         </columns>
       </TableView>
